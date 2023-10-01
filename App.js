@@ -52,6 +52,11 @@ export default function App() {
   //Return the Main View
   return (
     <View style={styles.container}>
+      <View>
+        <Text style={styles.scantext}>
+          Scan <Text style={styles.qrCodeText}>QR CODE</Text> {'\n'} to get {'\n'}  Translation
+        </Text>
+      </View>
       <View style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
@@ -60,7 +65,7 @@ export default function App() {
       </View>
       <Text style={styles.mainText}>{text} </Text>
 
-      {scanned && <Button title={'Snan again?'} onPress={() => setScanned(false)} color='tomato' />}
+      {scanned && <Button style={styles.qrCodeText} title={'Snan again?'} onPress={() => setScanned(false)} color='rgba(17, 195, 184, 1)' />}
 
     </View>
   );
@@ -69,9 +74,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(29, 29, 57, 1)',
     alignItems: 'center',
     justifyContent: 'center',
+
   },
 
   barcodebox: {
@@ -80,13 +86,38 @@ const styles = StyleSheet.create({
     height: 300,
     width: 300,
     overflow: 'hidden',
-    borderRadius: 30,
-    backgroundColor: 'tomato'
+    borderRadius: 5,
+
+    backgroundColor: 'gray',
 
   },
   mainText: {
-    fontSize: 16,
+    fontSize: 20,
     margin: 20,
+    color: 'white'
+  },
+  scantext: {
+    fontSize: 30,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  qrCodeText: {
+    color: 'rgba(17, 195, 184, 1)',
+    fontWeight: 'bold',
+
+  },
+  scanButton: {
+    /* Rectangle 3 */
+    position: 'absolute',
+
+    width: 10,
+    height: 10,
+    left: 10,
+    top: 10,
+    backgroundColor: ' #11C3B8',
+    borderRadius: 10,
+
   }
 });
 
